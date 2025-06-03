@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, Mic } from "lucide-react";
 import {
   Accordion,
   AccordionItem,
@@ -29,19 +29,24 @@ export default function Visa() {
   const [activeTab, setActiveTab] = useState("All");
 
   return (
-    <section className="w-full bg-white px-4 sm:px-6 lg:px-32 py-16 space-y-8">
+    <section className="w-full bg-white px-4 sm:px-6 lg:px-32 py-16 space-y-8 font-ibm">
       {/* Search + Filter */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        <div className="flex items-center border border-[#9DA4AE] rounded-sm px-3 py-2 w-full max-w-xs h-10">
-          <Search className="w-4 h-4 text-[#6B7280] mr-2" />
-          <input
-            type="text"
-            placeholder="Search"
-            className="outline-none w-full text-sm text-[#1F2A37] placeholder:text-[#9CA3AF]"
-          />
+        <div className="flex items-center justify-between border border-[#9DA4AE] rounded-sm px-3 py-2 w-full max-w-xs h-10">
+          <div className="flex items-center flex-1">
+            <Search className="w-4 h-4 text-[#6B7280] mr-2" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="outline-none w-full text-sm text-[#1F2A37] placeholder:text-[#9CA3AF]"
+            />
+          </div>
+          <button className="ml-2">
+            <Mic className="w-4 h-4 text-[#1F2A37]" />
+          </button>
         </div>
 
-        <button className="flex items-center gap-2 h-10 px-4 min-w-[123px] rounded-sm bg-[#0D121C] text-white text-sm">
+        <button className="flex items-center gap-2 h-10 px-4 min-w-[123px] rounded-sm bg-[#0D121C] text-white text-sm font-medium">
           <SlidersHorizontal className="w-4 h-4" />
           Filter
         </button>
@@ -78,11 +83,14 @@ export default function Visa() {
                 index !== 0 ? "border-t border-[#D2D6DB]" : ""
               } hover:shadow-md hover:bg-[#FAFAFA]`}
             >
-              <AccordionTrigger className="text-[#161616] font-semibold text-[16px] leading-[24px] tracking-normal hover:no-underline">
+              <AccordionTrigger className="text-[#161616] font-semibold text-[16px] leading-[24px] hover:no-underline">
                 {question}
               </AccordionTrigger>
               <AccordionContent className="text-[#4B5563] text-[14px] leading-[22px] font-normal max-w-[768px] mt-2">
-                The accordion component delivers large amounts of content in a small space through progressive disclosure. The user gets key details about the underlying content and can choose to expand that content within the constraints of the accordion.
+                The accordion component delivers large amounts of content in a
+                small space through progressive disclosure. The user gets key
+                details about the underlying content and can choose to expand
+                that content within the constraints of the accordion.
               </AccordionContent>
             </AccordionItem>
           ))}
