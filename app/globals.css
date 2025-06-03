@@ -1,24 +1,30 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
   html {
     font-size: 16px;
+    
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
   }
 
   body {
+    font-family: 'IBM Plex Sans Arabic';
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    @apply bg-background text-foreground;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -129,19 +135,5 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
 
-body::-webkit-scrollbar {
-  display: none;
-}
 
-body {
-  font-family: 'Inter', sans-serif;
-}
