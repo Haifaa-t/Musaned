@@ -1,14 +1,9 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default function FaqCard({
-  icon,
-  title,
-  description,
-  href = "#",
-}) {
+export default function FaqCard({ icon, title, description, href = "#" }) {
   return (
-    <div className="w-[628px] h-[276px] bg-white border border-[#D2D6DB] rounded-lg p-6 flex flex-col justify-between shadow-sm">
+    <div className="w-[628px] h-[276px] bg-white border border-[#D2D6DB] rounded-lg p-6 flex flex-col justify-between shadow-sm font-ibm">
       <div className="flex flex-col gap-4">
         {/* Icon */}
         <div className="w-12 h-12 rounded-full bg-[#F3FCF6] flex items-center justify-center">
@@ -16,10 +11,14 @@ export default function FaqCard({
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-[18px] font-semibold text-gray-900 leading-[26px]">
+          {title}
+        </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600">{description}</p>
+        <p className="text-sm font-normal text-gray-600 leading-[22px]">
+          {description}
+        </p>
       </div>
 
       {/* Arrow Button */}
@@ -36,3 +35,4 @@ export default function FaqCard({
     </div>
   );
 }
+
