@@ -20,12 +20,16 @@ export default function NavHeader2() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full h-[72px] bg-white border-b border-[#D2D6DB] px-4 lg:px-8">
+    <header className="w-full h-[72px] bg-white border-b border-[#D2D6DB] px-4 lg:px-8 font-ibm">
       <div className="max-w-[1376px] h-full mx-auto flex items-center justify-between">
         {/* Left: Logo + Nav */}
         <div className="flex items-center gap-12 w-full lg:w-auto">
           <Link href="/">
-            <img src="/Musaned.png" alt="Musaned platform logo" className="h-10 cursor-pointer" />
+            <img
+              src="/Musaned.png"
+              alt="Musaned platform logo"
+              className="h-10 cursor-pointer"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
@@ -33,18 +37,24 @@ export default function NavHeader2() {
               <Link
                 key={index}
                 href={link.href}
-                className="text-[#161616] font-medium text-[16px] leading-6 flex items-center"
+                className="text-[#161616] font-medium text-[16px] leading-6 flex items-center font-ibm"
               >
                 {link.label}
-                {link.hasDropdown && <ChevronDown className="ml-2 w-4 h-4" />}
+                {link.hasDropdown && (
+                  <ChevronDown className="ml-2 w-4 h-4" />
+                )}
               </Link>
             ))}
+
+            {/* FAQs button with highlight */}
             <Link
               href="/"
-              className="bg-[#1B8354] text-white text-[16px] font-semibold leading-6 rounded-sm px-6 py-2 relative"
+              className="relative w-[70px] h-[72px] rounded-sm bg-[#1B8354] flex flex-col items-center justify-center font-ibm"
             >
-              FAQs
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-[3px] bg-[#067647] rounded-full" />
+              <span className="text-white font-semibold text-[16px] leading-6">
+                FAQs
+              </span>
+              <span className="absolute bottom-2 w-[54px] h-[6px] rounded-full bg-[#54C08A]" />
             </Link>
           </nav>
         </div>
@@ -52,7 +62,11 @@ export default function NavHeader2() {
         {/* Right: Actions */}
         <div className="hidden lg:flex items-center gap-6">
           {utilityLinks.map((link, index) => (
-            <Link key={index} href={link.href} className="flex items-center text-[#161616]">
+            <Link
+              key={index}
+              href={link.href}
+              className="flex items-center text-[#161616] font-medium font-ibm text-[15px]"
+            >
               {link.icon}
               {link.label}
             </Link>
@@ -60,26 +74,40 @@ export default function NavHeader2() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="lg:hidden text-[#161616]" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="lg:hidden text-[#161616]"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden px-4 pt-4 pb-6 bg-white border-t border-[#D2D6DB]">
+        <div className="lg:hidden px-4 pt-4 pb-6 bg-white border-t border-[#D2D6DB] font-ibm">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link, index) => (
-              <Link key={index} href={link.href} className="text-[#161616]">
+              <Link
+                key={index}
+                href={link.href}
+                className="text-[#161616] font-medium text-[15px]"
+              >
                 {link.label}
               </Link>
             ))}
-            <Link href="/" className="text-white bg-[#1B8354] w-max px-4 py-2 rounded-sm">
+            <Link
+              href="/"
+              className="text-white bg-[#1B8354] w-max px-4 py-2 rounded-sm font-semibold text-[15px]"
+            >
               FAQs
             </Link>
             <hr />
             {utilityLinks.map((link, index) => (
-              <Link key={index} href={link.href} className="text-[#161616]">
+              <Link
+                key={index}
+                href={link.href}
+                className="text-[#161616] font-medium text-[15px]"
+              >
                 {link.label}
               </Link>
             ))}
@@ -89,4 +117,5 @@ export default function NavHeader2() {
     </header>
   );
 }
+
 
