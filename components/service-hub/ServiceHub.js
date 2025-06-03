@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
 import {
   ArrowRight,
   FileText,
   UserPlus,
   RefreshCcw,
   BadgeCheck,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 const cards = [
   {
@@ -41,7 +41,7 @@ const cards = [
     description:
       "Comprehensive information and answers to questions related to transferring labor services between individuals and entities, including transfers from entity to individual, individual to individual, individual to entity, and agricultural services.",
   },
-]
+];
 
 const faqList = [
   {
@@ -69,11 +69,11 @@ const faqList = [
     answer:
       "The accordion component delivers large amounts of content in a small space through progressive disclosure. The user gets key details about the underlying content and can choose to expand that content within the constraints of the accordion.",
   },
-]
+];
 
 export default function ServiceHubSection() {
   return (
-    <section className="w-full bg-white px-4 sm:px-6 lg:px-32 py-20 space-y-16 font-sans">
+    <section className="w-full bg-white px-4 sm:px-6 lg:px-32 py-20 space-y-16 font-ibm">
       {/* Cards Grid */}
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {cards.map((card, index) => {
@@ -96,24 +96,31 @@ export default function ServiceHubSection() {
                 </div>
               </div>
             </div>
-          )
+          );
 
           return card.title === "Issuing a visa" ? (
-            <Link key={index} href="/issuing-a-visa">{CardContent}</Link>
+            <Link key={index} href="/issuing-a-visa">
+              {CardContent}
+            </Link>
           ) : (
             <div key={index}>{CardContent}</div>
-          )
+          );
         })}
       </div>
 
       {/* Accordion Section */}
       <div className="max-w-[1280px] mx-auto border-t border-[#D2D6DB]">
-        <Accordion type="multiple" className="w-full divide-y divide-[#D2D6DB]">
+        <Accordion
+          type="multiple"
+          className="w-full divide-y divide-[#D2D6DB]"
+        >
           {faqList.map((faq, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className={`px-4 py-3 transition duration-200 ${index !== 0 ? 'border-t border-[#D2D6DB]' : ''} hover:shadow-md hover:bg-[#FAFAFA]`}
+              className={`px-4 py-3 transition duration-200 ${
+                index !== 0 ? "border-t border-[#D2D6DB]" : ""
+              } hover:shadow-md hover:bg-[#FAFAFA]`}
             >
               <AccordionTrigger className="text-[#161616] font-semibold text-[16px] leading-[24px] tracking-normal hover:no-underline">
                 {faq.question}
@@ -126,7 +133,7 @@ export default function ServiceHubSection() {
         </Accordion>
       </div>
     </section>
-  )
+  );
 }
 
 
