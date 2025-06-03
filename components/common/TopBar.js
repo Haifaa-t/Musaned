@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import {
   Cloud,
   Calendar,
@@ -10,68 +10,75 @@ import {
   ZoomIn,
   ZoomOut,
   Eye,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function SecondNavHeader() {
-  const [date, setDate] = useState("")
-  const [time, setTime] = useState("")
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   useEffect(() => {
     const updateTime = () => {
-      const now = new Date()
-      const optionsDate = { day: 'numeric', month: 'short', year: 'numeric' }
-      const optionsTime = { hour: 'numeric', minute: '2-digit', hour12: true }
+      const now = new Date();
+      const optionsDate = { day: "numeric", month: "short", year: "numeric" };
+      const optionsTime = { hour: "numeric", minute: "2-digit", hour12: true };
 
-      const formattedDate = now.toLocaleDateString("en-GB", optionsDate).replace(/ /g, "-")
-      const formattedTime = now.toLocaleTimeString("en-GB", optionsTime)
+      const formattedDate = now
+        .toLocaleDateString("en-GB", optionsDate)
+        .replace(/ /g, "-");
+      const formattedTime = now.toLocaleTimeString("en-GB", optionsTime);
 
-      setDate(formattedDate)
-      setTime(formattedTime)
-    }
+      setDate(formattedDate);
+      setTime(formattedTime);
+    };
 
-    updateTime()
-    const interval = setInterval(updateTime, 60000)
-    return () => clearInterval(interval)
-  }, [])
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleMic = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      alert("Speech recognition not supported in this browser.")
-      return
+      alert("Speech recognition not supported in this browser.");
+      return;
     }
 
-    const recognition = new SpeechRecognition()
-    recognition.lang = "en-US"
-    recognition.interimResults = false
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
 
     recognition.onstart = () => {
-      console.log("Listening...")
-    }
+      console.log("Listening...");
+    };
 
     recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript
-      console.log(" You said:", transcript)
-      alert(" You said: " + transcript)
-    }
+      const transcript = event.results[0][0].transcript;
+      console.log("You said:", transcript);
+      alert("You said: " + transcript);
+    };
 
     recognition.onerror = (event) => {
-      console.error("Speech recognition error:", event.error)
-    }
+      console.error("Speech recognition error:", event.error);
+    };
 
-    recognition.start()
-  }
+    recognition.start();
+  };
 
   const handleZoomIn = () => {
-    document.body.style.zoom = `${(parseFloat(document.body.style.zoom || "1") + 0.1).toFixed(1)}`
-  }
+    document.body.style.zoom = `${(
+      parseFloat(document.body.style.zoom || "1") + 0.1
+    ).toFixed(1)}`;
+  };
 
   const handleZoomOut = () => {
-    document.body.style.zoom = `${(parseFloat(document.body.style.zoom || "1") - 0.1).toFixed(1)}`
-  }
+    document.body.style.zoom = `${(
+      parseFloat(document.body.style.zoom || "1") - 0.1
+    ).toFixed(1)}`;
+  };
 
   return (
-    <div className="hidden sm:flex w-full h-[40px] bg-[#F3F4F6] px-4 sm:px-8 items-center justify-center">
+    <div className="hidden sm:flex w-full h-[40px] bg-[#F3F4F6] px-4 sm:px-8 items-center justify-center font-ibm">
       <div className="max-w-[1280px] w-full h-[32px] flex items-center justify-between text-[12px] leading-[16px] font-normal text-[#1F2A37]">
         {/* Left */}
         <div className="flex flex-wrap items-center gap-4">
@@ -110,7 +117,7 @@ export default function SecondNavHeader() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 
