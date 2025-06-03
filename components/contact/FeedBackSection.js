@@ -10,7 +10,7 @@ export default function FeedbackSection() {
   };
 
   return (
-    <section className="w-full bg-white px-6 sm:px-10 lg:px-20 pt-6 pb-12">
+    <section className="w-full bg-white px-6 sm:px-10 lg:px-20 pt-6 pb-12 font-ibm">
       {/* Last Modified Date */}
       <div className="max-w-[1280px] mx-auto text-right text-xs text-[#1F2A37] mb-6">
         Last Modified Date: {lastModified}
@@ -23,7 +23,9 @@ export default function FeedbackSection() {
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
         {/* Question + Buttons */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <span className="text-[#1F2A37] text-sm">{question}</span>
+          <span className="text-[#1F2A37] text-sm font-medium">
+            {question}
+          </span>
           <div className="flex gap-4">
             <button
               onClick={() => handleFeedback("yes")}
@@ -43,7 +45,9 @@ export default function FeedbackSection() {
         </div>
 
         {/* Feedback Stats */}
-        <span className="text-[#4B5563] text-sm text-right">{stats}</span>
+        <span className="text-[#4B5563] text-sm font-normal text-right">
+          {stats}
+        </span>
       </div>
     </section>
   );
