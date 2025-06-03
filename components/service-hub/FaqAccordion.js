@@ -35,14 +35,18 @@ const faqList = [
 
 export default function FAQAccordion() {
   return (
-    <div className="max-w-[1280px] mx-auto border-t border-[#D2D6DB] divide-y divide-[#D2D6DB]">
+    <div className="max-w-[1280px] mx-auto border-t border-[#D2D6DB] divide-y divide-[#D2D6DB] font-ibm">
       <Accordion type="multiple" className="w-full">
         {faqList.map((faq, index) => (
-          <AccordionItem key={index} value={`item-${index}`} className="px-4">
-            <AccordionTrigger className="text-[#1F2A37] font-medium text-base py-5">
+          <AccordionItem
+            key={index}
+            value={`item-${index}`}
+            className="px-4 py-3 hover:bg-[#FAFAFA] transition duration-150"
+          >
+            <AccordionTrigger className="text-[#1F2A37] font-semibold text-[16px] leading-[24px] hover:no-underline">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-[#4B5563] pb-6">
+            <AccordionContent className="text-sm font-normal text-[#4B5563] leading-[22px] mt-2">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
@@ -51,3 +55,4 @@ export default function FAQAccordion() {
     </div>
   );
 }
+
